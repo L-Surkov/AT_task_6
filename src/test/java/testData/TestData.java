@@ -14,15 +14,15 @@ public class TestData {
             year =String.format("%s", faker.number().numberBetween(1925, 2007)),
             month = faker.options().option("January", "February", "March", "April",
             "May", "June", "July", "August", "September", "October", "November", "December"),
-            day =  String.format("%s", faker.number().numberBetween(10, 28)),
+            day =  String.format("%s", faker.number().numberBetween(1, 28)),
             subject = faker.options().option("Maths", "Hindi", "History", "Biology", "Accounting", "Chemistry"),
             hobby = faker.options().option("Sports", "Reading", "Music"),
             image = faker.options().option("imagefortest.png", "image_2.png"),
             currentAddress = faker.address().streetAddress(),
             state = faker.options().option("NCR", "Uttar Pradesh", "Rajasthan", "Haryana"),
-            city = getCityFromState(state);
+            city = getCityFromState();
 
-    private String getCityFromState(String state) {
+    private String getCityFromState() {
 
         if (this.state.equals("NCR")) {
             return faker.options().option("Delhi", "Gurgagon", "Noida");
