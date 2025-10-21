@@ -20,17 +20,15 @@ public class TestData {
             image = faker.options().option("imagefortest.png", "image_2.png"),
             currentAddress = faker.address().streetAddress(),
             state = faker.options().option("NCR", "Uttar Pradesh", "Rajasthan", "Haryana"),
-            city = getCityFromState();
+            city = getCityFromState(state);
 
-    private String getCityFromState() {
-
-        if (this.state.equals("NCR")) {
-            return faker.options().option("Delhi", "Gurgagon", "Noida");
-        } else if (this.state.equals("Uttar Pradesh")) {
-            return faker.options().option("Agra", "Lucknow", "Merrut");
-        } else if (this.state.equals("Rajasthan")) {
-            return faker.options().option("Jaipur", "Jaiselmer");
-        }
-        return faker.options().option("Karnal", "Panipat");
+    public String getCityFromState(String state) {
+        return switch (state) {
+            case "NCR" -> faker.options().option("Delhi", "Gurgaon", "Noida");
+            case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
+            case "Haryana" -> faker.options().option("Karnal", "Panipat");
+            case "Rajasthan" -> faker.options().option("Jaipur", "Jaiselmer");
+            default -> null;
+        };
     }
 }
